@@ -112,6 +112,10 @@ type Flower struct {
 	KeyIPv4SrcMask       *net.IP
 	KeyIPv4Dst           *net.IP
 	KeyIPv4DstMask       *net.IP
+	keyIPv6Src           *net.IP
+	keyIPv6SrcMask       *net.IP
+	keyIPv6Dst           *net.IP
+	keyIPv6DstMask       *net.IP
 	KeyTCPSrc            *uint16
 	KeyTCPDst            *uint16
 	KeyUDPSrc            *uint16
@@ -219,6 +223,30 @@ func unmarshalFlower(data []byte, info *Flower) error {
 		case tcaFlowerKeyIPv4DstMask:
 			tmp := uint32ToIP(ad.Uint32())
 			info.KeyIPv4DstMask = &tmp
+		case tcaFlowerKeyIPv6Src:
+			tmp, err := bytesToIP(ad.Bytes()[:])
+			if err != nil {
+				return fmt.Errorf(`failed to unmarshal flower IPv6Src address %q: %v`, ad.Bytes(), err)
+			}
+			info.keyIPv6Src = &tmp
+		case tcaFlowerKeyIPv6SrcMask:
+			tmp, err := bytesToIP(ad.Bytes()[:])
+			if err != nil {
+				return fmt.Errorf(`failed to unmarshal flower IPv6SrcMask address %q: %v`, ad.Bytes(), err)
+			}
+			info.keyIPv6SrcMask = &tmp
+		case tcaFlowerKeyIPv6Dst:
+			tmp, err := bytesToIP(ad.Bytes()[:])
+			if err != nil {
+				return fmt.Errorf(`failed to unmarshal flower IPv6Dst address %q: %v`, ad.Bytes(), err)
+			}
+			info.keyIPv6Dst = &tmp
+		case tcaFlowerKeyIPV6DstMask:
+			tmp, err := bytesToIP(ad.Bytes()[:])
+			if err != nil {
+				return fmt.Errorf(`failed to unmarshal flower IPv6DstMask address %q: %v`, ad.Bytes(), err)
+			}
+			info.keyIPv6DstMask = &tmp
 		case tcaFlowerKeyTCPSrc:
 			tmp := ad.Uint16()
 			info.KeyTCPSrc = &tmp
