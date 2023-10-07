@@ -481,6 +481,22 @@ func marshalFlower(info *Flower) ([]byte, error) {
 		multiError = concatError(multiError, err)
 		options = append(options, tcOption{Interpretation: vtUint32, Type: tcaFlowerKeyIPv4DstMask, Data: tmp})
 	}
+	if info.KeyIPv6Src != nil {
+		tmp := ipToBytes(*info.KeyIPv6Src)
+		options = append(options, tcOption{Interpretation: vtBytes, Type: tcaFlowerKeyIPv6Src, Data: tmp})
+	}
+	if info.KeyIPv6SrcMask != nil {
+		tmp := ipToBytes(*info.KeyIPv6SrcMask)
+		options = append(options, tcOption{Interpretation: vtBytes, Type: tcaFlowerKeyIPv6SrcMask, Data: tmp})
+	}
+	if info.KeyIPv6Dst != nil {
+		tmp := ipToBytes(*info.KeyIPv6Dst)
+		options = append(options, tcOption{Interpretation: vtBytes, Type: tcaFlowerKeyIPv6Dst, Data: tmp})
+	}
+	if info.KeyIPv6DstMask != nil {
+		tmp := ipToBytes(*info.KeyIPv6DstMask)
+		options = append(options, tcOption{Interpretation: vtBytes, Type: tcaFlowerKeyIPV6DstMask, Data: tmp})
+	}
 	if info.KeyTCPSrc != nil {
 		options = append(options, tcOption{Interpretation: vtUint16Be, Type: tcaFlowerKeyTCPSrc, Data: *info.KeyTCPSrc})
 	}
