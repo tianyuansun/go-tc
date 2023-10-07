@@ -228,25 +228,25 @@ func unmarshalFlower(data []byte, info *Flower) error {
 			if err != nil {
 				return fmt.Errorf(`failed to unmarshal flower IPv6Src address %q: %v`, ad.Bytes(), err)
 			}
-			info.keyIPv6Src = &tmp
+			info.KeyIPv6Src = &tmp
 		case tcaFlowerKeyIPv6SrcMask:
 			tmp, err := bytesToIP(ad.Bytes()[:])
 			if err != nil {
 				return fmt.Errorf(`failed to unmarshal flower IPv6SrcMask address %q: %v`, ad.Bytes(), err)
 			}
-			info.keyIPv6SrcMask = &tmp
+			info.KeyIPv6SrcMask = &tmp
 		case tcaFlowerKeyIPv6Dst:
 			tmp, err := bytesToIP(ad.Bytes()[:])
 			if err != nil {
 				return fmt.Errorf(`failed to unmarshal flower IPv6Dst address %q: %v`, ad.Bytes(), err)
 			}
-			info.keyIPv6Dst = &tmp
+			info.KeyIPv6Dst = &tmp
 		case tcaFlowerKeyIPV6DstMask:
 			tmp, err := bytesToIP(ad.Bytes()[:])
 			if err != nil {
 				return fmt.Errorf(`failed to unmarshal flower IPv6DstMask address %q: %v`, ad.Bytes(), err)
 			}
-			info.keyIPv6DstMask = &tmp
+			info.KeyIPv6DstMask = &tmp
 		case tcaFlowerKeyTCPSrc:
 			tmp := ad.Uint16()
 			info.KeyTCPSrc = &tmp
