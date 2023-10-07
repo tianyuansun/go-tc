@@ -112,10 +112,10 @@ type Flower struct {
 	KeyIPv4SrcMask       *net.IP
 	KeyIPv4Dst           *net.IP
 	KeyIPv4DstMask       *net.IP
-	keyIPv6Src           *net.IP
-	keyIPv6SrcMask       *net.IP
-	keyIPv6Dst           *net.IP
-	keyIPv6DstMask       *net.IP
+	KeyIPv6Src           *net.IP
+	KeyIPv6SrcMask       *net.IP
+	KeyIPv6Dst           *net.IP
+	KeyIPv6DstMask       *net.IP
 	KeyTCPSrc            *uint16
 	KeyTCPDst            *uint16
 	KeyUDPSrc            *uint16
