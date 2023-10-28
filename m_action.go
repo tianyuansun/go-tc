@@ -106,7 +106,7 @@ func unmarshalAction(data []byte, info *Action) error {
 		case tcaActPad:
 			// padding does not contain data, we just skip it
 		default:
-			return fmt.Errorf("unmarshalAction()\t%d\n\t%v", ad.Type(), ad.Bytes())
+			//return fmt.Errorf("unmarshalAction()\t%d\n\t%v", ad.Type(), ad.Bytes())
 		}
 	}
 	if len(actOptions) > 0 {
